@@ -8,7 +8,9 @@ namespace APka
     {
         static void Main(string[] args)
         {
-            string[] tasks  = { "task 1", "task 2", "task 3", "task 4", "task 5" };
+            string path = @"C:\Users\Valentyn Kravchenko\Desktop\apka.txt";
+            string[] tasks  = File.ReadAllLines(path);
+           
             for ( ; ; )
             {
                 Console.WriteLine("enter 1, to CONTINUE");
@@ -16,10 +18,6 @@ namespace APka
                 Console.WriteLine("enter 3, for ADD ELEMENT");
                 Console.WriteLine("enter 4, for DELETE ELEMENT");
                 Console.WriteLine("enter 5, for EXIT");
-
-                string path = @"C:\Users\Valentyn Kravchenko\Desktop\apka.txt";
-
-                string[] readText = File.ReadAllLines(path);
 
                 int number = Convert.ToInt32(Console.ReadLine());
                 if(number == 2)
@@ -67,11 +65,9 @@ namespace APka
                             newTasks2[i] = i < deleteIndex ? tasks[i] : tasks[i + 1];
                         }
                         tasks = newTasks2;
-                    }
+ 
+                    } 
                 }
-
-                //string path = @"C:\Users\Valentyn Kravchenko\Desktop\apka.txt";
-
                 File.WriteAllLines(path, tasks, Encoding.UTF8);
 
                 if (number == 5)
